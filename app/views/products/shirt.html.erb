@@ -1,0 +1,12 @@
+<div class="container">
+<%= form_tag "/new_product", method: :post do %>
+  Name: <input type="text" name="product_name">
+  <br />
+  Price: <input type="text" name="price">
+  <br />
+  Description: <input type="text" name="description">
+  <br />
+  Image: <input type="text" name="image">
+  <input type="submit" value="new shirt">
+<% end %>
+</div>

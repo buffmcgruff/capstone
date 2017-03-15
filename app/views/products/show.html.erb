@@ -1,0 +1,11 @@
+<%= @product.name  %>
+<%= @product.price  %>
+<%= @product.description  %>
+
+<br/>
+<br/>
+<%= link_to "edit product", "/products/#{@product.id}/edit" %>
+<br/>
+<%= link_to "Delete product", "/products/#{@product.id}", method: :delete %>
+
+              
