@@ -1,16 +1,31 @@
 class ProductsController < ApplicationController
 
-
 	def index
-		
-		@products = Product.all	
-		render 'index.html.erb'
+		sort = params[:sort]
+		sort_order = params[:sort_order]
+		discount = params[:discount]
 
+		if sort && sort_order
+       		@products = Product.all.order(sort => sort_order)
+     	else
+      		@products = Product.all
+     	end
+		
+
+		discount = params[:discount]
+		if discount
+			@products = Product.where("price < ?", 50)
+
+	end
+	
+
+
+				
 	end
 
 	def show
 		product_id = params[:id]
-		@product = Product.find_by(id: product_id )
+		@product = Product.find_by(id: product_id)
 	end
 
 	def shirt

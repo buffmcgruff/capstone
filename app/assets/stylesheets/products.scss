@@ -1,3 +1,27 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+font-family: 'Diplomata SC', cursive;
+font-family: 'PT Sans', sans-serif;
+}
+
+
+.index_product_image {
+ height: 120px;
+}
+
+ .picture {
+ height: 230px;
+ }
+
+.ccontainer {
+	text-align: center;
+}
+
+#btn-group.sort {
+	margin-right: 50px;
+}
+

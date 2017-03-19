@@ -1,11 +1,15 @@
-<%= @product.name  %>
-<%= @product.price  %>
-<%= @product.description  %>
+<div class="container">
+  <div class="details">
+    <h3> Name: <%= @product.name  %></h3>
+    <p>Price: <%= @product.price  %></p>
+    <p>Tax: <%= @product.tax  %> </p>
+    <p>Total: <%= @product.total  %></p>
+    <p>Description: <%= @product.description %></p>
+  </div>
+  <div>
+    <%= link_to "edit product", "/products/#{@product.id}/edit" %>
+    <br/>
+    <%= link_to "Delete product", "/products/#{@product.id}", method: :delete %>
+  </div>
+</div>
 
-<br/>
-<br/>
-<%= link_to "edit product", "/products/#{@product.id}/edit" %>
-<br/>
-<%= link_to "Delete product", "/products/#{@product.id}", method: :delete %>
-
-              

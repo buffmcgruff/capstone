@@ -1,25 +1,39 @@
 
 <h1> products </h1>
-<h2>All Available Products</h2>
-<a href="/products/new" class="btn btn-info" role="button">New item</a>                  
-<table class="table table-striped">
-<thead>
-  <tr>
-	<th> Name</th>
- 	<th> Description</th>
- 	<th> Price</th>
- </tr>
-</thead>
-<tbody>
-	<% @products.each do |item| %>
-	 	<tr>
-		  <td> <a href= "/products/<%= item.id %>" > <%= item[:name] %>  </a></td>
-		  <td> <a href= "/products/<%= item.id %>" > <%= item[:price] %> </a></td>
-		  <td> <a href= "/products/<%= item.id %>" > <%= item[:description] %> </a></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
 
 
+<div class="btn-group" id = "sort">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- <li><a href="/products?sort=price">price</a></li>  -->
+    <li><a href="/products?sort=price&sort_order=asc">Sort by Name Ascending</li>
+    <li><a href="/products?price&sort_order=desc">Sort by Name Descending</a></li>
+    <!-- <li><a href="/products?sort=product_name&sort_order=asc">Sort by Name Ascending</a></li>  -->
+    <!-- <li><a href="/products?sort=product_name&sort_order=desc">Sort by Name Descending</a></li>  -->
+    <li><a href="/products?discount&sort_order=desc">Discounts</a></li>
 
+    
+  </ul>
+</div>
+    
+
+
+	<% @products.each_slice(3) do |three_products| %>
+		<div class="row">
+			<% three_products.each do |product| %>
+				<div class="col-md-4">
+					<div class="well">
+						<a href="/products/<%= product.id %>">
+							<h2><%= product.name %></h2>
+								<img class = "picture" src="assets/<%= product.image %>">
+								<p> <%= product.price  %> </p>
+								<p> <%= product.sale_message %> </p>							
+						</a>	 
+					</div>
+				</div>
+			<% end %>	
+		</div>	
+	<% end %>		
+	 
