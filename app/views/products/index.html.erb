@@ -8,14 +8,33 @@
   </button>
   <ul class="dropdown-menu">
     <!-- <li><a href="/products?sort=price">price</a></li>  -->
-    <li><a href="/products?sort=price&sort_order=asc">Sort by Name Ascending</li>
-    <li><a href="/products?price&sort_order=desc">Sort by Name Descending</a></li>
+    <li><a href="/products?sort=name&sort_order=asc">Sort by Name Ascending</li>
+    <li><a href="/products?sort=name&sort_order=desc">Sort by Name Descending</a></li>
     <!-- <li><a href="/products?sort=product_name&sort_order=asc">Sort by Name Ascending</a></li>  -->
-    <!-- <li><a href="/products?sort=product_name&sort_order=desc">Sort by Name Descending</a></li>  -->
-    <li><a href="/products?discount&sort_order=desc">Discounts</a></li>
+    <!-- <li><a href="/products?sort=product_name&sort_order=desc">Sort by Name Descending</a></li>  -->    
+    <li><a href="/products?discount=true"> Discount Products</a></li>
+	
 
     
   </ul>
+
+		 
+		 
+		 <br />
+		 <br />
+		 
+		 <%= form_tag "/search", method: :post do %>
+		   Search: <input type="text" name="search_term">
+		   <input type="submit" value="Search!">
+		 <% end %>
+		 
+		 <br />
+		 <br />
+
+
+
+
+
 </div>
     
 
@@ -29,6 +48,7 @@
 							<h2><%= product.name %></h2>
 								<img class = "picture" src="assets/<%= product.image %>">
 								<p> <%= product.price  %> </p>
+
 								<p> <%= product.sale_message %> </p>							
 						</a>	 
 					</div>

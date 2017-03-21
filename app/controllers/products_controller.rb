@@ -5,28 +5,36 @@ class ProductsController < ApplicationController
 		sort_order = params[:sort_order]
 		discount = params[:discount]
 
-		if sort && sort_order
-       		@products = Product.all.order(sort => sort_order)
-     	else
-      		@products = Product.all
-     	end
-		
-
-		discount = params[:discount]
 		if discount
-			@products = Product.where("price < ?", 50)
+			@products = Product.where(" price < ?", 40)
+		else
+      		@products = Product.all
+    	end
 
-	end
-	
-
-
-				
+		if sort && sort_order
+   			@products = Product.order(sort => sort_order)
+		end
+		
 	end
 
 	def show
-		product_id = params[:id]
-		@product = Product.find_by(id: product_id)
+			# product_id = params[:id]
+			# @product = Product.find_by(id: product_id)
+			if params[:id] == "random"
+       # Select random recipe from the database
+       products = Product.all
+       @product = products.sample
+     else
+       product_id = params[:id]
+       @product = Product.find_by(id: product_id)
+     end
 	end
+
+	def search
+	     search_term = params[:search_term]
+	     @products = Product.where("name ILIKE ?", "%#{search_term}%")
+	     render :index
+    end
 
 	def shirt
 	end
